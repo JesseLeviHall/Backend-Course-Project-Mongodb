@@ -70,10 +70,10 @@ promotionRouter
   })
   .delete((req, res) => {
     Promotion.findByIdAndDelete(req.params.partnerId)
-      .then((partner) => {
+      .then((promotion) => {
         res.statusCode = 200;
         res.setHeader("Content-Type", "application/json");
-        res.json(partner);
+        res.json(promotion);
       })
       .catch((err) => next(err));
   });
