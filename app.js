@@ -48,9 +48,10 @@ app.use(
   })
 );
 
-function auth(req, res, next) {
-  console.log(req.session);
+app.use("/", indexRouter);
+app.use("/users", usersRouter);
 
+function auth(req, res, next) {
   if (!req.session.user) {
     const err = new Error("You are not authenticated!");
     err.status = 401;
@@ -67,11 +68,7 @@ function auth(req, res, next) {
 }
 
 app.use(auth);
-
 app.use(express.static(path.join(__dirname, "public")));
-
-app.use("/", indexRouter);
-app.use("/users", usersRouter);
 app.use("/campsites", campsiteRouter);
 app.use("/promotions", promotionRouter);
 app.use("/partners", partnerRouter);

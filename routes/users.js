@@ -69,7 +69,7 @@ router.post("/login", (req, res, next) => {
   } else {
     res.statusCode = 200;
     res.setHeader("Content-Type", "text/plain");
-    res.end("You are already authenticated!");
+    res.end("You are already truly authenticated!");
   }
 });
 
